@@ -1,0 +1,507 @@
+/* Valentine's Day for Jaan - Styles */
+
+:root {
+  --github-bg: #0d1117;
+  --github-card: #161b22;
+  --github-border: #30363d;
+  --github-text: #c9d1d9;
+  --github-muted: #8b949e;
+  --accent-pink: #ff6b9d;
+  --accent-rose: #f472b6;
+  --accent-gold: #fbbf24;
+  --heart-red: #ef4444;
+  --glow: rgba(255, 107, 157, 0.4);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--github-bg);
+  color: var(--github-text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.hearts-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.heart-float {
+  position: absolute;
+  font-size: 20px;
+  opacity: 0.15;
+  animation: floatUp 15s infinite ease-in-out;
+}
+
+.heart-float:nth-child(1) { left: 10%; animation-delay: 0s; }
+.heart-float:nth-child(2) { left: 25%; animation-delay: 2s; }
+.heart-float:nth-child(3) { left: 40%; animation-delay: 4s; }
+.heart-float:nth-child(4) { left: 55%; animation-delay: 1s; }
+.heart-float:nth-child(5) { left: 70%; animation-delay: 3s; }
+.heart-float:nth-child(6) { left: 85%; animation-delay: 5s; }
+.heart-float:nth-child(7) { left: 15%; animation-delay: 6s; }
+.heart-float:nth-child(8) { left: 90%; animation-delay: 2.5s; }
+.heart-float:nth-child(9) { left: 50%; animation-delay: 7s; }
+.heart-float:nth-child(10) { left: 5%; animation-delay: 4.5s; }
+
+@keyframes floatUp {
+  0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.15; }
+  90% { opacity: 0.1; }
+  100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+header {
+  text-align: center;
+  padding: 60px 0 40px;
+  border-bottom: 1px solid var(--github-border);
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid var(--accent-pink);
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, var(--github-card), var(--accent-pink));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  animation: pulse-glow 2s ease-in-out infinite;
+  box-shadow: 0 0 30px var(--glow);
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 30px var(--glow); }
+  50% { box-shadow: 0 0 50px var(--glow), 0 0 80px rgba(255, 107, 157, 0.2); }
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-pink);
+  margin-bottom: 8px;
+  text-shadow: 0 0 20px var(--glow);
+  cursor: pointer;
+}
+
+.subtitle {
+  font-family: 'Quicksand', sans-serif;
+  color: var(--github-muted);
+  font-size: 1.1rem;
+}
+
+.typing-section {
+  background: var(--github-card);
+  border: 1px solid var(--github-border);
+  border-radius: 12px;
+  padding: 32px;
+  margin: 40px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.typing-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--accent-pink), var(--heart-red));
+  border-radius: 4px 0 0 4px;
+}
+
+.typing-label {
+  font-size: 0.85rem;
+  color: var(--github-muted);
+  margin-bottom: 12px;
+}
+
+.typing-text {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.25rem;
+  min-height: 2em;
+  color: var(--github-text);
+}
+
+.typing-text .cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1.2em;
+  background: var(--accent-pink);
+  margin-left: 2px;
+  animation: blink 0.8s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.contrib-section {
+  margin: 50px 0;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--accent-pink);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contrib-graph {
+  background: var(--github-card);
+  border: 1px solid var(--github-border);
+  border-radius: 12px;
+  padding: 24px;
+  display: inline-block;
+}
+
+.contrib-grid {
+  display: grid;
+  grid-template-columns: repeat(53, 14px);
+  grid-template-rows: repeat(7, 14px);
+  gap: 3px;
+}
+
+.contrib-cell {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background: var(--github-border);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.contrib-cell.filled {
+  background: var(--heart-red);
+  animation: heartBeat 1.5s ease-in-out infinite;
+}
+
+.contrib-cell.filled.level-1 { background: #fca5a5; }
+.contrib-cell.filled.level-2 { background: #f87171; }
+.contrib-cell.filled.level-3 { background: #ef4444; }
+.contrib-cell.filled.level-4 { background: #dc2626; box-shadow: 0 0 10px rgba(239, 68, 68, 0.5); }
+
+.contrib-cell:hover {
+  transform: scale(1.2);
+}
+
+.contrib-legend {
+  display: flex;
+  gap: 4px;
+  margin-top: 12px;
+  font-size: 0.75rem;
+  color: var(--github-muted);
+}
+
+.contrib-legend span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.button-section {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.accept-btn {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 20px 40px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, var(--accent-pink), var(--heart-red));
+  color: white;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 40px rgba(239, 68, 68, 0.4);
+}
+
+.accept-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 15px 50px rgba(239, 68, 68, 0.6);
+}
+
+.accept-btn:active {
+  transform: scale(0.98);
+}
+
+.accept-btn.accepted {
+  animation: celebrate 0.6s ease;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  box-shadow: 0 0 60px rgba(34, 197, 94, 0.6);
+}
+
+@keyframes celebrate {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.2); }
+  50% { transform: scale(1.1); }
+  75% { transform: scale(1.15); }
+  100% { transform: scale(1.1); }
+}
+
+.accept-btn .heart-icon {
+  display: inline-block;
+  margin-left: 8px;
+  animation: heartPulse 1s ease-in-out infinite;
+}
+
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  animation: confettiFall 3s ease-out forwards;
+}
+
+.confetti.heart {
+  font-size: 20px;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.error-section {
+  background: var(--github-card);
+  border: 1px solid var(--github-border);
+  border-radius: 12px;
+  padding: 60px 40px;
+  margin: 50px 0;
+  text-align: center;
+  position: relative;
+}
+
+.error-section .error-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 4rem;
+  font-weight: 600;
+  color: var(--github-muted);
+  margin-bottom: 10px;
+  letter-spacing: 4px;
+}
+
+.error-section .error-message {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--accent-pink);
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.error-section .error-detail {
+  color: var(--github-muted);
+  font-size: 0.9rem;
+}
+
+.error-heart {
+  font-size: 3rem;
+  margin-top: 20px;
+  animation: heartBeat 1.5s ease-in-out infinite;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: linear-gradient(180deg, var(--github-card) 0%, #1a1f2e 100%);
+  border: 2px solid var(--accent-pink);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  transform: scale(0.7) translateY(-50px);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 0 60px var(--glow), inset 0 0 60px rgba(255, 107, 157, 0.05);
+}
+
+.modal-overlay.active .modal-content {
+  transform: scale(1) translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--github-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.modal-close:hover {
+  color: var(--accent-pink);
+}
+
+.love-letter {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: var(--github-text);
+}
+
+.love-letter .greeting {
+  font-size: 1.4rem;
+  color: var(--accent-pink);
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.love-letter p {
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+.love-letter .signature {
+  margin-top: 30px;
+  font-style: italic;
+  color: var(--accent-rose);
+  text-align: right;
+}
+
+.letter-hearts {
+  text-align: center;
+  font-size: 2rem;
+  margin: 20px 0;
+  letter-spacing: 10px;
+}
+
+footer {
+  text-align: center;
+  padding: 60px 0 40px;
+  border-top: 1px solid var(--github-border);
+  color: var(--github-muted);
+  font-size: 0.9rem;
+}
+
+footer .heart {
+  color: var(--heart-red);
+  animation: heartBeat 1.5s ease-in-out infinite;
+}
+
+.surprise-message {
+  text-align: center;
+  padding: 30px;
+  background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(239, 68, 68, 0.1));
+  border: 1px solid var(--accent-pink);
+  border-radius: 12px;
+  margin-top: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.surprise-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.surprise-message h3 {
+  font-family: 'Playfair Display', serif;
+  color: var(--accent-pink);
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.surprise-message p {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.1rem;
+  color: var(--github-text);
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
